@@ -3,8 +3,8 @@ package stringutil
 // reverse2 is only visible within the package stringutil.
 
 // reverse2 takes in a string and returns a copy of the string with the
-// character order reversed. This is more efficient since it changes the
-// input string in place.
+// character order reversed. This is more efficient than reverse3 since it changes the
+// input string in place, using less memory
 func reverse3(s string) string {
 	chars := []rune(s)
 	for i, j := 0, len(chars)-1; i < len(chars)/ 2; i, j = i+1, j-1 {
