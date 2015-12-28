@@ -17,9 +17,9 @@ func average(data ...float64) float64 {
 
 func main() {
 	// Using a variadic function explicitly
-	fmt.Println("The average of the numbers [23,42,63,48,88,13,51]:", average(23,42,63,48,88,13,51))
+	fmt.Printf("The average of the numbers [23,42,63,48,88,13,51]: %.2f\n", average(23,42,63,48,88,13,51))
 
 	// Using the variadic functions implicitly
 	data := []float64{23,42,63,48,88,13,51}
-	fmt.Println("The average of the numbers in data is", average(data...))
+	fmt.Printf("The average of the numbers in data is %.2f\n", average(data...))
 }
