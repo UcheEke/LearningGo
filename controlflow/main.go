@@ -6,5 +6,6 @@ import (
 
 func main() {
 	controlfuncs.Fors()
+	controlfuncs.Switchers()
 }
 
