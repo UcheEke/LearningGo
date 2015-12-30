@@ -38,11 +38,12 @@ func Exercises(){
 
 	// Exercise 3 (and Exercise 5!)
 	// Function that finds the maximum value in a list of integers
-	fmt.Println("\nExercise 3")
+	fmt.Println("\nExercise 3 (...and 5!)")
 	data := []int{2,5,4,7,56,8,43,20,1,16,74}
 	fmt.Printf("The biggest value in %v is %d\n", data, max(data...))
 
 	// Exercise 4
+	fmt.Println("\nExercise 4")
 	fmt.Println("I know, I know, I know this much is", (true && false) || (false && true) || !(false && false)) // should print true
 
 	// Exercise 6
