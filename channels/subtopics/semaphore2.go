@@ -4,7 +4,7 @@ import (
 	"fmt"
 )
 
-func SemaTwo(){
+func SemaTwo() {
 	// Similar to SemaOne(), only this time using for loops to generate go routines
 	// and another for loop to generate an equal number of <-done 'waits'
 
@@ -14,10 +14,10 @@ func SemaTwo(){
 
 	fmt.Println("\nSemaphore Example #2...")
 	// Generate multiple go routines
-	for i:=0; i<numProc; i++ {
+	for i := 0; i < numProc; i++ {
 		go func(a int) {
 			for j := 0; j < 3; j++ {
-				fmt.Printf("go routine #%d tx -> %d\n",a,j)
+				fmt.Printf("go routine #%d Tx -> %d\n", a, j)
 				chData <- j
 			}
 			chDone <- true
@@ -25,16 +25,16 @@ func SemaTwo(){
 	}
 
 	// Generate an equal number of wait processes
-	go func(){
-		for i:=0;i<numProc;i++{
-			<- chDone
-			fmt.Printf("Closed chDone #%d\n",i)
+	go func() {
+		for i := 0; i < numProc; i++ {
+			<-chDone
+			fmt.Printf("Closed chDone #%d\n", i)
 		}
 		close(chData)
 		close(chDone)
 	}()
 
 	for n := range chData {
-		fmt.Printf("Semaphore2: data rx <- %d\n", n)
+		fmt.Printf("Semaphore2: Rx <- %d\n", n)
 	}
 }

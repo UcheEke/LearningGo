@@ -21,4 +21,5 @@ func main() {
 	subtopics.SemaTwo()
 
 	subtopics.One2Many()
+	subtopics.PassingChannels()
 }
