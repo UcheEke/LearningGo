@@ -2,14 +2,16 @@ package main
 
 import (
 	"fmt"
-	"github.com/UcheEke/LearningGo/channels/subtopics"
-	"sync"
+	_"github.com/UcheEke/LearningGo/channels/subtopics"
+	_"sync"
+	"github.com/UcheEke/LearningGo/channels/challenges"
 )
 
-var wgA sync.WaitGroup
+//var wgA sync.WaitGroup
 
 func main() {
 	fmt.Println("Channels")
+	/*
 	subtopics.Unbuffered(20, wgA)
 	wgA.Wait()
 
@@ -22,4 +24,12 @@ func main() {
 
 	subtopics.One2Many()
 	subtopics.PassingChannels()
+
+	subtopics.DualAccumulator(10)
+	*/
+
+	//fmt.Printf("10! = %d\n",subtopics.Factorial(10))  // 120
+
+	challenges.MultiFact()
+
 }
