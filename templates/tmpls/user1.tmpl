@@ -1,0 +1,6 @@
+Name:       {{.Firstname}} {{.Lastname}}
+
+Address:    {{.Addr.House}}, {{.Addr.Street}},
+            {{.Addr.Town}}, {{.Addr.PostZip}},
+            {{.Addr.CountyState}}
+{{template "user2.tmpl" . }}
