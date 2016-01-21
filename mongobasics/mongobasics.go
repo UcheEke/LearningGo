@@ -1,0 +1,78 @@
+package main
+import (
+	"gopkg.in/mgo.v2"
+	"gopkg.in/mgo.v2/bson"
+	"log"
+	"fmt"
+)
+
+type Address struct {
+	HouseNo string
+	Street string
+	Town string
+	County string
+	Postcode string
+}
+
+type Teldata struct {
+	Home string
+	Mobile string
+}
+
+type User struct {
+	Firstname string
+	Lastname string
+	Address Address
+	Email string
+	Tel Teldata
+}
+
+func main(){
+	session, err := mgo.Dial("localhost:27017")
+	if err != nil {
+		panic(err)
+	}
+
+	defer session.Close()
+
+	if DBnames, err := session.DatabaseNames(); err == nil {
+		fmt.Printf("Databases included in this session are: %v\n", DBnames)
+	}
+
+	c := session.DB("people").C("contacts")
+
+	cust1 := &User{
+		Firstname : "Jemma",
+		Lastname : "Peel",
+		Address: Address{
+			HouseNo:"91A",
+			Street:"Stratford Avenue",
+			Town:"Preston",
+			County:"Lancashire",
+			Postcode:"PR12 5XX",
+		},
+		Email: "jpeel23@hotmail.co.uk",
+		Tel : Teldata{
+			Home:"02094445501",
+			Mobile:"O7779053231",
+		},
+	}
+
+	err = c.Insert(cust1)
+	if err != nil {
+		log.Fatal("DBase insertion error:",err)
+	}
+
+	result := User{}
+	err = c.Find(bson.M{"firstname" : "Jemma"}).One(&result)
+	if err != nil {
+		log.Fatal("DBase search error:",err)
+	}
+
+	fmt.Printf("User: %v\n", result)
+
+	if DBnames, err := session.DatabaseNames(); err == nil {
+		fmt.Printf("Databases included in this session are: %v\n", DBnames)
+	}
+
+}
