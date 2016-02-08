@@ -1,4 +1,4 @@
-package main
+
 import (
 	"gopkg.in/mgo.v2"
 	"gopkg.in/mgo.v2/bson"
@@ -39,7 +39,7 @@ func main(){
 		fmt.Printf("Databases included in this session are: %v\n", DBnames)
 	}
 
-	c := session.DB("people").C("contacts")
+	c := session.DB("client_details").C("contacts")
 
 	cust1 := &User{
 		Firstname : "Jemma",
